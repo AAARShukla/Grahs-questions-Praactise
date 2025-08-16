@@ -1,0 +1,24 @@
+void dfs(int node,vector<vector<int>>& isConnected,vector<int>&visited){
+    int n=isConnected.size();
+    visited[node]=1;
+    for(int i=0;i<n;i++){
+        if(isConnected[node][i]==1 && !visited[i]){
+            dfs(i,isConnected,visited);
+        }
+    }
+}
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n=isConnected.size();
+        vector<int>visited(n);
+        int count=0;
+        for(int i=0;i<n;i++){
+            if(!visited[i]){
+                count++;
+                dfs(i,isConnected,visited);
+            }
+        }
+    return count;
+    }
+
+Time complexicity-O(N^2)
+Space Complexicity-O(N)
